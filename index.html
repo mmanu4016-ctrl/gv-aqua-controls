@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GV Aqua Controls - Premium Automatic Water Tank Controller. Eliminates water overflow, protects pumps from dry run & voltage fluctuations, and automates water management. Smart Water. Smarter Living.">
+  <title>GV Aqua Controls | Smart Water. Smarter Living.</title>
+  
+  <!-- Inter & Syne Fonts for premium look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Premium Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <div class="brand-symbol">
+        <svg viewBox="0 0 100 100" width="80" height="80">
+          <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(0,200,255,0.1)" stroke-width="4" />
+          <path d="M50 15 C 30 45, 20 60, 20 70 A 30 30 0 0 0 80 70 C 80 60, 70 45, 50 15 Z" fill="none" stroke="url(#logo-grad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <defs>
+            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00C8FF" />
+              <stop offset="100%" stop-color="#3BE7FF" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="brand-text">GV AQUA CONTROLS</div>
+      <div class="loading-bar-container">
+        <div class="loading-bar" id="loading-bar"></div>
+      </div>
+      <div class="loading-percent" id="loading-percent">0%</div>
+    </div>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="header" id="header">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 100 100" width="36" height="36" style="vertical-align: middle; margin-right: 8px;">
+          <path d="M50 20 C 35 45, 25 58, 25 68 A 25 25 0 0 0 75 68 C 75 58, 65 45, 50 20 Z" fill="url(#logo-grad)" />
+        </svg>
+        <span class="logo-text">GV AQUA CONTROLS</span>
+      </a>
+      
+      <nav class="nav-menu">
+        <a href="#scrolly-section" class="nav-link active">Overview</a>
+        <a href="#engineering" class="nav-link">Engineering</a>
+        <a href="#automation" class="nav-link">Automation</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#trust" class="nav-link">Specifications</a>
+        <a href="#dealer" class="nav-link">Dealer Portal</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <a href="#dealer" class="btn btn-primary btn-sm">Buy Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Pinned Scrollytelling Section -->
+  <section class="scrolly-section" id="scrolly-section">
+    <div class="sticky-container">
+      <canvas id="scrolly-canvas"></canvas>
+      
+      <!-- Canvas particle overlay (electric waves & water drops) -->
+      <div class="particle-overlay" id="particle-overlay"></div>
+      
+      <!-- Scroll Story Overlays -->
+      
+      <!-- Slide 1: Intro (0-15%) -->
+      <div class="scroll-slide active" id="slide-intro" data-start="0" data-end="15">
+        <div class="slide-content text-center">
+          <span class="badge">Introducing The Future</span>
+          <h1 class="hero-title">GV Aqua Controls</h1>
+          <p class="hero-subtitle">Smart Water. Smarter Living.</p>
+          <p class="hero-description">Precision water automation engineered to eliminate overflow, protect pumps, and manage supply intelligently.</p>
+          <div class="hero-ctas">
+            <a href="#engineering" class="btn btn-primary">Explore Technology</a>
+            <a href="#automation" class="btn btn-secondary">Watch Working Demo</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 2: Automation (15-35%) -->
+      <div class="scroll-slide" id="slide-automation" data-start="15" data-end="35">
+        <div class="slide-content text-left">
+          <span class="badge-accent">Advanced Intelligence</span>
+          <h2 class="slide-title">The Brain Behind<br>Every Drop.</h2>
+          <p class="slide-copy">An intelligent controller that continuously monitors tank levels and coordinates motor functions dynamically. No manual inputs, no human errors—just flawless automation working silently in the background.</p>
+        </div>
+      </div>
+      
+      <!-- Slide 3: Protection (35-55%) -->
+      <div class="scroll-slide" id="slide-protection" data-start="35" data-end="55">
+        <div class="slide-content text-right">
+          <span class="badge-accent">Industrial Grade Safety</span>
+          <h2 class="slide-title">Built To Protect.</h2>
+          <ul class="protection-list">
+            <li>
+              <div class="icon-wrap"><i class="fa-solid fa-droplet-slash"></i></div>
+              <div class="desc"><strong>Dry Run Protection</strong> Prevents motor burnout when source water is depleted.</div>
+            </li>
+            <li>
+              <div class="icon-wrap"><i class="fa-solid fa-bolt"></i></div>
+              <div class="desc"><strong>Voltage Protection</strong> Instantly isolates the pump during surges or voltage drops.</div>
+            </li>
+            <li>
+              <div class="icon-wrap"><i class="fa-solid fa-hourglass-half"></i></div>
+              <div class="desc"><strong>Delay Timer</strong> Calibrates restart intervals to prevent rapid cycling stress.</div>
+            </li>
+            <li>
+              <div class="icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="desc"><strong>Heavy Duty Relay</strong> Rated for millions of cycles under severe electrical loads.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Slide 4: Engineering (55-75%) -->
+      <div class="scroll-slide" id="slide-engineering" data-start="55" data-end="75">
+        <div class="slide-content text-left">
+          <span class="badge-accent">Precision Architecture</span>
+          <h2 class="slide-title">Engineered<br>With Precision.</h2>
+          <p class="slide-copy">We reject cheap electrical designs. Every copper track, relay armature, and heat sink is oversized to cope with tough Indian electrical conditions. Our component layouts are optimized for extreme thermal dissipation and zero latency.</p>
+        </div>
+      </div>
+      
+      <!-- Slide 5: Real World (75-90%) -->
+      <div class="scroll-slide" id="slide-realworld" data-start="75" data-end="90">
+        <div class="slide-content text-center">
+          <span class="badge-accent">Household Integration</span>
+          <h2 class="slide-title">Complete Automation.<br>No Overflow. No Worries.</h2>
+          <p class="slide-copy max-w-600">Integrates with sumps, overhead tanks, and heavy-duty water pumps. Witness full automated system cycles below.</p>
+          <a href="#automation" class="btn btn-primary btn-glow">Simulate System Flow</a>
+        </div>
+      </div>
+      
+      <!-- Slide 6: Final (90-100%) -->
+      <div class="scroll-slide" id="slide-final" data-start="90" data-end="100">
+        <div class="slide-content text-center">
+          <span class="badge-success">Built For Generations</span>
+          <h2 class="slide-title">Protect Your Motor.<br>Save Water. Save Power.</h2>
+          <p class="hero-description">The ultimate investment for modern villas, smart residential apartments, and industrial units.</p>
+          <div class="hero-ctas">
+            <a href="#dealer" class="btn btn-primary btn-glow">Buy GV Aqua Controls</a>
+            <a href="#dealer" class="btn btn-secondary">Become a Dealer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive PCB / Engineering Section -->
+  <section class="section engineering-section" id="engineering">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <span class="section-tag">Interactive Diagram</span>
+        <h2 class="section-title">The Engineering Blueprint</h2>
+        <p class="section-subtitle">Hover or click hotspots on the logic board to explore the industrial-grade anatomy of our smart controller.</p>
+      </div>
+
+      <div class="engineering-layout">
+        <!-- Interactive Hotspot PCB SVG Visual -->
+        <div class="pcb-visual-container">
+          <div class="pcb-bg-ambient"></div>
+          
+          <svg class="pcb-svg" viewBox="0 0 800 600" width="100%" height="100%">
+            <!-- Board background -->
+            <rect x="50" y="50" width="700" height="500" rx="24" ry="24" fill="#0b0d10" stroke="rgba(255,255,255,0.05)" stroke-width="2"/>
+            <!-- Circuit pathways pattern -->
+            <path d="M120 100 H300 V300 H400 M120 200 H250 V180 H350 M580 100 H450 V250 H380 M680 500 V400 H550 V200 M120 500 H280 V420 H340 M420 500 V350 M500 500 H580 V320" fill="none" stroke="rgba(0, 200, 255, 0.15)" stroke-width="2" stroke-dasharray="8,6" />
+            <!-- Heavy-Duty Relay Block -->
+            <rect x="100" y="100" width="140" height="150" rx="8" fill="#14181f" stroke="rgba(0, 200, 255, 0.3)" stroke-width="2" />
+            <text x="170" y="180" fill="rgba(255,255,255,0.4)" font-size="14" text-anchor="middle" font-weight="600">30A RELAY</text>
+            
+            <!-- Step-down Transformer Block -->
+            <rect x="100" y="320" width="150" height="160" rx="8" fill="#14181f" stroke="rgba(0, 200, 255, 0.3)" stroke-width="2" />
+            <text x="175" y="405" fill="rgba(255,255,255,0.4)" font-size="14" text-anchor="middle" font-weight="600">TRANSFORMER</text>
+
+            <!-- Fuse Holder Block -->
+            <rect x="290" y="100" width="60" height="120" rx="6" fill="#14181f" stroke="rgba(0, 200, 255, 0.3)" stroke-width="2" />
+            <line x1="320" y1="120" x2="320" y2="200" stroke="#ffaa00" stroke-width="3" stroke-linecap="round" />
+            <text x="320" y="210" fill="rgba(255,255,255,0.4)" font-size="10" text-anchor="middle">FUSE</text>
+
+            <!-- Microcontroller Chip (MCU) -->
+            <rect x="420" y="220" width="140" height="140" rx="12" fill="#080a0e" stroke="rgba(0, 200, 255, 0.5)" stroke-width="2" />
+            <!-- MCU pins -->
+            <path d="M405 240 h15 M405 260 h15 M405 280 h15 M405 300 h15 M405 320 h15 M405 340 h15 M560 240 h15 M560 260 h15 M560 280 h15 M560 300 h15 M560 320 h15 M560 340 h15 M440 205 v15 M460 205 v15 M480 205 v15 M500 205 v15 M520 205 v15 M540 205 v15 M440 360 v15 M460 360 v15 M480 360 v15 M500 360 v15 M520 360 v15 M540 360 v15" fill="none" stroke="rgba(0, 200, 255, 0.4)" stroke-width="2" />
+            <text x="490" y="295" fill="rgba(255,255,255,0.8)" font-size="14" text-anchor="middle" font-weight="bold" letter-spacing="1">ARM CORTEX</text>
+
+            <!-- Terminal Blocks -->
+            <rect x="620" y="100" width="80" height="380" rx="8" fill="#14181f" stroke="rgba(0, 200, 255, 0.3)" stroke-width="2" />
+            <!-- Terminals -->
+            <circle cx="660" cy="140" r="12" fill="#222" stroke="rgba(255,255,255,0.2)" />
+            <circle cx="660" cy="190" r="12" fill="#222" stroke="rgba(255,255,255,0.2)" />
+            <circle cx="660" cy="240" r="12" fill="#222" stroke="rgba(255,255,255,0.2)" />
+            <circle cx="660" cy="290" r="12" fill="#222" stroke="rgba(255,255,255,0.2)" />
+            <circle cx="660" cy="340" r="12" fill="#222" stroke="rgba(255,255,255,0.2)" />
+            <circle cx="660" cy="395" r="12" fill="#222" stroke="rgba(255,255,255,0.2)" />
+            <circle cx="660" cy="440" r="12" fill="#222" stroke="rgba(255,255,255,0.2)" />
+            <text x="660" y="85" fill="rgba(255,255,255,0.5)" font-size="12" text-anchor="middle">TERMINAL STRIP</text>
+
+            <!-- Status LED Driver Area -->
+            <rect x="300" y="360" width="70" height="120" rx="6" fill="#14181f" stroke="rgba(0, 200, 255, 0.2)" stroke-width="1" />
+            <circle cx="335" cy="390" r="6" fill="#3be7ff" />
+            <circle cx="335" cy="420" r="6" fill="#00c8ff" />
+            <circle cx="335" cy="450" r="6" fill="#ff2a5f" />
+          </svg>
+
+          <!-- Hotspots placement overlay -->
+          <div class="pcb-hotspot" style="top: 25%; left: 22%;" data-target="info-relay">
+            <span class="ping"></span>
+            <span class="dot"><i class="fa-solid fa-plus"></i></span>
+          </div>
+
+          <div class="pcb-hotspot" style="top: 67%; left: 23%;" data-target="info-transformer">
+            <span class="ping"></span>
+            <span class="dot"><i class="fa-solid fa-plus"></i></span>
+          </div>
+
+          <div class="pcb-hotspot" style="top: 27%; left: 40%;" data-target="info-fuse">
+            <span class="ping"></span>
+            <span class="dot"><i class="fa-solid fa-plus"></i></span>
+          </div>
+
+          <div class="pcb-hotspot" style="top: 48%; left: 61%;" data-target="info-mcu">
+            <span class="ping"></span>
+            <span class="dot"><i class="fa-solid fa-plus"></i></span>
+          </div>
+
+          <div class="pcb-hotspot" style="top: 32%; left: 82%;" data-target="info-terminals">
+            <span class="ping"></span>
+            <span class="dot"><i class="fa-solid fa-plus"></i></span>
+          </div>
+
+          <div class="pcb-hotspot" style="top: 67%; left: 42%;" data-target="info-leds">
+            <span class="ping"></span>
+            <span class="dot"><i class="fa-solid fa-plus"></i></span>
+          </div>
+        </div>
+
+        <!-- Hotspot descriptions panel (Dynamic display) -->
+        <div class="pcb-info-panel glass-card">
+          <div class="info-content-holder" id="info-content-holder">
+            <div class="initial-prompt">
+              <i class="fa-solid fa-circle-info accent-glow"></i>
+              <h3>Select a Component</h3>
+              <p>Click on any pulsing hotspot on the motherboard to inspect its detailed specifications, tolerances, and engineering safety margins.</p>
+            </div>
+            
+            <!-- Hidden details content template database -->
+            <div class="info-details-data" id="info-relay" style="display: none;">
+              <span class="comp-badge">Power switching</span>
+              <h3>30A Heavy-Duty Relay</h3>
+              <p class="comp-summary">Engineered to handle inrush currents of large inductive motor pumps without contact welding.</p>
+              <table class="spec-table">
+                <tr><td>Current Rating</td><td>30 Amperes</td></tr>
+                <tr><td>Operational Cycles</td><td>1,000,000+ operations</td></tr>
+                <tr><td>Coil Protection</td><td>TVS Diode Snubber</td></tr>
+                <tr><td>Contact Material</td><td>Silver Tin Oxide (AgSnO2)</td></tr>
+              </table>
+            </div>
+
+            <div class="info-details-data" id="info-transformer" style="display: none;">
+              <span class="comp-badge">Power isolation</span>
+              <h3>Copper-Wound Transformer</h3>
+              <p class="comp-summary">Step-down linear power supply designed to withstand high thermal loads and extreme line surges.</p>
+              <table class="spec-table">
+                <tr><td>Winding Material</td><td>99.9% Pure Copper</td></tr>
+                <tr><td>Isolation Rating</td><td>Up to 3.75 kVAC</td></tr>
+                <tr><td>Operating Range</td><td>90V to 300V AC Input</td></tr>
+                <tr><td>Safety Standards</td><td>Class B Insulation</td></tr>
+              </table>
+            </div>
+
+            <div class="info-details-data" id="info-fuse" style="display: none;">
+              <span class="comp-badge">Overcurrent protection</span>
+              <h3>Ceramic Cartridge Fuse</h3>
+              <p class="comp-summary">Fast-acting ceramic fuse blocks short circuits instantly, guarding the microprocessor logic board.</p>
+              <table class="spec-table">
+                <tr><td>Fusing Type</td><td>Ceramic Arc-Quenching</td></tr>
+                <tr><td>Breaking Capacity</td><td>1.5 kA at 250V AC</td></tr>
+                <tr><td>Replacement Format</td><td>Quick-Swap Clip-in</td></tr>
+                <tr><td>Current Limit</td><td>2A Control Logic Limit</td></tr>
+              </table>
+            </div>
+
+            <div class="info-details-data" id="info-mcu" style="display: none;">
+              <span class="comp-badge">Control logic</span>
+              <h3>ARM Cortex Microcontroller</h3>
+              <p class="comp-summary">The CPU core running a real-time level algorithm. Evaluates voltage parameters, sensor debounce state, and dry-run timers every 5 milliseconds.</p>
+              <table class="spec-table">
+                <tr><td>Sampling Frequency</td><td>200 Hz</td></tr>
+                <tr><td>Logic Resolution</td><td>10-bit ADC Level Mapping</td></tr>
+                <tr><td>Watchdog Timer</td><td>Hardware Auto-Reset Enabled</td></tr>
+                <tr><td>Software Filter</td><td>Jitter Noise Rejection</td></tr>
+              </table>
+            </div>
+
+            <div class="info-details-data" id="info-terminals" style="display: none;">
+              <span class="comp-badge">Connections</span>
+              <h3>High-Barrier Terminals</h3>
+              <p class="comp-summary">Flame-retardant terminal strips for incoming mains, motor pumps, and sensor inputs.</p>
+              <table class="spec-table">
+                <tr><td>Terminal Pitch</td><td>9.5 mm Isolation Gap</td></tr>
+                <tr><td>Wire Capacity</td><td>Up to 6 sq.mm heavy cable</td></tr>
+                <tr><td>Housing Material</td><td>UL94 V-0 Polycarbonate</td></tr>
+                <tr><td>Screw Spec</td><td>M3.5 Nickel-Plated Steel</td></tr>
+              </table>
+            </div>
+
+            <div class="info-details-data" id="info-leds" style="display: none;">
+              <span class="comp-badge">HMI Interface</span>
+              <h3>Smart Status LED Cluster</h3>
+              <p class="comp-summary">Constant-current driven LED display indicating exact system status at a glance.</p>
+              <table class="spec-table">
+                <tr><td>Indicators</td><td>Power, Motor status, Water limits, Dry-run</td></tr>
+                <tr><td>Drive Circuitry</td><td>Shift-register logic to avoid CPU overhead</td></tr>
+                <tr><td>Visual Range</td><td>High-visibility wide angle</td></tr>
+                <tr><td>Luminance</td><td>Daylight legible, nocturnal dimmed</td></tr>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Smart Home Automation Section -->
+  <section class="section automation-section" id="automation">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <span class="section-tag">Interactive Simulation</span>
+        <h2 class="section-title">Smart Water Automation in Action</h2>
+        <p class="section-subtitle">Experience how GV Aqua Controls monitors a household's water lifecycle and automatically defends its pumps from real-world threats.</p>
+      </div>
+
+      <div class="simulator-layout">
+        <!-- Visualization Panel (SVG Home representation) -->
+        <div class="sim-visual-container glass-card">
+          <div class="house-svg-wrapper">
+            <svg class="house-svg" viewBox="0 0 800 500" width="100%" height="100%">
+              <!-- Gradient Definitions -->
+              <defs>
+                <linearGradient id="water-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(59, 231, 255, 0.8)" />
+                  <stop offset="100%" stop-color="rgba(0, 200, 255, 0.4)" />
+                </linearGradient>
+                <linearGradient id="pipe-inactive" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#14181f" />
+                  <stop offset="100%" stop-color="#0b0d10" />
+                </linearGradient>
+              </defs>
+
+              <!-- House Backdrop Silhouette -->
+              <path d="M 150 400 L 150 200 L 250 120 L 550 120 L 650 200 L 650 400 Z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="4" />
+              
+              <!-- Underground Sump Tank (Source) -->
+              <rect x="80" y="380" width="140" height="90" rx="6" fill="#0d1117" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+              <text x="150" y="460" fill="rgba(255,255,255,0.3)" font-size="12" text-anchor="middle" font-weight="600">SUMP TANK</text>
+              <!-- Sump water graphic (Dynamic height via inline styles/JS) -->
+              <rect id="sump-water" x="82" y="400" width="136" height="68" fill="url(#water-grad)" rx="4" style="transition: all 0.5s ease;" />
+              <!-- Sump Level Sensors -->
+              <line x1="210" y1="390" x2="210" y2="445" stroke="#ff5e00" stroke-width="2" stroke-linecap="round" />
+              <circle cx="210" cy="445" r="4" fill="#ff5e00" />
+              <circle cx="210" cy="410" r="4" fill="#ff5e00" />
+              
+              <!-- Overhead Roof Tank (Storage) -->
+              <rect x="520" y="50" width="140" height="110" rx="6" fill="#0d1117" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+              <text x="590" y="150" fill="rgba(255,255,255,0.3)" font-size="12" text-anchor="middle" font-weight="600">OVERHEAD TANK</text>
+              <!-- Overhead water graphic (Dynamic height) -->
+              <rect id="roof-water" x="522" y="100" width="136" height="58" fill="url(#water-grad)" rx="4" style="transition: all 0.5s ease;" />
+              <!-- Overhead Level Sensors -->
+              <line x1="535" y1="60" x2="535" y2="135" stroke="#00c8ff" stroke-width="2" stroke-linecap="round" />
+              <circle cx="535" cy="135" r="4" fill="#00c8ff" /> <!-- LOW sensor -->
+              <circle cx="535" cy="80" r="4" fill="#00c8ff" /> <!-- HIGH sensor -->
+
+              <!-- Piping network (Water Flow Path) -->
+              <!-- Suction pipe: Sump to Pump -->
+              <path id="pipe-suction" d="M 120 420 H 260 V 370 H 300" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+              <!-- Delivery pipe: Pump to Overhead Tank -->
+              <path id="pipe-delivery" d="M 330 350 H 480 V 75 H 520" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+              
+              <!-- Flows running along pipes (animated stroke-dashoffset overlay in JS/CSS) -->
+              <path id="flow-suction" d="M 120 420 H 260 V 370 H 300" fill="none" stroke="#3BE7FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10, 15" stroke-dashoffset="0" style="display:none;" />
+              <path id="flow-delivery" d="M 330 350 H 480 V 75 H 520" fill="none" stroke="#3BE7FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10, 15" stroke-dashoffset="0" style="display:none;" />
+
+              <!-- Pump Motor unit -->
+              <g transform="translate(300, 330)">
+                <rect x="0" y="0" width="40" height="50" rx="4" fill="#1f2937" stroke="rgba(255,255,255,0.1)" />
+                <circle cx="20" cy="25" r="14" fill="#111827" stroke="rgba(0, 200, 255, 0.4)" stroke-width="2" />
+                <!-- Motor impeller status -->
+                <line id="motor-impeller-1" x1="20" y1="13" x2="20" y2="37" stroke="#3BE7FF" stroke-width="2" />
+                <line id="motor-impeller-2" x1="8" y1="25" x2="32" y2="25" stroke="#3BE7FF" stroke-width="2" />
+                <text x="20" y="-8" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle" font-weight="bold">MOTOR PUMP</text>
+              </g>
+
+              <!-- GV Aqua Controller unit -->
+              <g transform="translate(340, 160)">
+                <!-- Controller Box -->
+                <rect x="0" y="0" width="70" height="90" rx="8" fill="#0b0d10" stroke="#00C8FF" stroke-width="2" />
+                <text x="35" y="16" fill="white" font-size="7" font-weight="900" text-anchor="middle" letter-spacing="0.5">GV AQUA</text>
+                <!-- Controller LEDs -->
+                <!-- Power LED -->
+                <circle id="led-sim-power" cx="20" cy="35" r="3" fill="#ffaa00" />
+                <text x="28" y="37" fill="rgba(255,255,255,0.6)" font-size="6">POWER</text>
+                <!-- Motor ON LED -->
+                <circle id="led-sim-motor" cx="20" cy="48" r="3" fill="#333" />
+                <text x="28" y="50" fill="rgba(255,255,255,0.6)" font-size="6">MOTOR</text>
+                <!-- Tank Full LED -->
+                <circle id="led-sim-full" cx="20" cy="61" r="3" fill="#333" />
+                <text x="28" y="63" fill="rgba(255,255,255,0.6)" font-size="6">FULL</text>
+                <!-- Warning LED -->
+                <circle id="led-sim-err" cx="20" cy="74" r="3" fill="#333" />
+                <text x="28" y="76" fill="rgba(255,255,255,0.6)" font-size="6">FAULT</text>
+              </g>
+
+              <!-- Electrical wires to sensor nodes -->
+              <!-- Wiring path: Controller to Sump sensor -->
+              <path d="M 340 220 H 260 V 390 H 210" fill="none" stroke="rgba(255, 94, 0, 0.4)" stroke-dasharray="3,3" stroke-width="1.5" />
+              <!-- Wiring path: Controller to Overhead sensor -->
+              <path d="M 410 220 H 450 V 60 H 535" fill="none" stroke="rgba(0, 200, 255, 0.4)" stroke-dasharray="3,3" stroke-width="1.5" />
+              <!-- Wiring path: Controller to Pump power -->
+              <path d="M 375 250 V 330" fill="none" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.5" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Controller Dashboard & Simulator Settings -->
+        <div class="sim-controls-panel glass-card">
+          <h3>Simulation Control Console</h3>
+          <p>Interact with the controls below to trigger environmental changes. Observe the controller reacting instantly.</p>
+          
+          <div class="scenario-toggles">
+            <button class="btn btn-secondary active" id="sim-btn-auto">
+              <i class="fa-solid fa-arrows-spin"></i> Auto Cycle Mode
+            </button>
+            <button class="btn btn-secondary" id="sim-btn-dry">
+              <i class="fa-solid fa-droplet-slash"></i> Sump Dry (Dry Run)
+            </button>
+            <button class="btn btn-secondary" id="sim-btn-voltage">
+              <i class="fa-solid fa-bolt-lightning"></i> High/Low Voltage
+            </button>
+            <button class="btn btn-secondary" id="sim-btn-manual">
+              <i class="fa-solid fa-hand-pointer"></i> Manual Override
+            </button>
+          </div>
+
+          <!-- Dynamic settings display based on active scenario -->
+          <div class="simulator-feedback-board">
+            <div id="sim-state-desc" class="state-description">
+              <h4>Active Scenario: Auto Cycle Mode</h4>
+              <p>The controller detects the Overhead Tank level. When it falls to the bottom probe (Low), the motor turns ON automatically. Once it reaches the top probe (Full), the motor turns OFF.</p>
+            </div>
+            
+            <div class="sim-sliders-group">
+              <div class="slider-row">
+                <label>Overhead Tank Level: <span id="lbl-overhead-val">30%</span></label>
+                <input type="range" id="slider-overhead" min="0" max="100" value="30">
+              </div>
+              <div class="slider-row">
+                <label>Sump Tank Level: <span id="lbl-sump-val">80%</span></label>
+                <input type="range" id="slider-sump" min="0" max="100" value="80">
+              </div>
+              <div class="slider-row" id="row-voltage" style="display:none;">
+                <label>Line Voltage: <span id="lbl-voltage-val">230 V</span></label>
+                <input type="range" id="slider-voltage" min="120" max="300" value="230">
+              </div>
+            </div>
+
+            <!-- Manual switch toggle (Shown in manual mode only) -->
+            <div class="manual-control-row" id="row-manual-switch" style="display:none; text-align: center; margin-top: 15px;">
+              <button class="btn btn-primary" id="btn-manual-pump-toggle">SWITCH MOTOR ON</button>
+            </div>
+
+            <!-- Logger terminal output -->
+            <div class="logger-box">
+              <div class="logger-header">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                <span class="title">SYSTEM DIAGNOSTICS LOG</span>
+              </div>
+              <div class="logger-terminal" id="sim-logger">
+                <div class="log-line text-yellow">[SYSTEM INITIALIZED] GV Aqua Controls active.</div>
+                <div class="log-line">[AUTO MODE] Sump verified: OK. Level: 80%</div>
+                <div class="log-line">[AUTO MODE] Overhead Tank at 30%. Triggering Automatic ON...</div>
+                <div class="log-line text-green">[MOTOR STATUS] Motor ON. Water flowing.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Features Section -->
+  <section class="section features-section" id="features">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <span class="section-tag">Key Features</span>
+        <h2 class="section-title">Built for Industrial Precision</h2>
+        <p class="section-subtitle">Engineered to deliver commercial-grade dependability inside Indian households.</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Card 1 -->
+        <div class="feature-card glass-card">
+          <div class="glow-point"></div>
+          <div class="card-icon"><i class="fa-solid fa-arrows-spin"></i></div>
+          <h3>Automatic Motor ON/OFF</h3>
+          <p>Completely automates pump routines. Refills the overhead tank before it runs completely dry, and cuts power the second the tank fills.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="feature-card glass-card">
+          <div class="glow-point"></div>
+          <div class="card-icon"><i class="fa-solid fa-droplet-slash"></i></div>
+          <h3>Dry Run Protection</h3>
+          <p>Constantly monitors pump load. If water supply at the sump source ceases, the controller shuts the motor off within 15 seconds to prevent overheating.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="feature-card glass-card">
+          <div class="glow-point"></div>
+          <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>Under/Over Voltage Protection</h3>
+          <p>Guards motor coils from grid fluctuations. Cuts supply if line voltage drops below 160V or surges above 260V, reconnecting automatically once safe limits return.</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="feature-card glass-card">
+          <div class="glow-point"></div>
+          <div class="card-icon"><i class="fa-solid fa-clock"></i></div>
+          <h3>Intelligent Delay Timer</h3>
+          <p>Prevents destructive short-cycling caused by temporary sensor waves. Adds a built-in buffer delay before re-enabling power switches.</p>
+        </div>
+        <!-- Card 5 -->
+        <div class="feature-card glass-card">
+          <div class="glow-point"></div>
+          <div class="card-icon"><i class="fa-solid fa-toggle-on"></i></div>
+          <h3>Manual Override Switch</h3>
+          <p>Dedicated industrial-grade bypass toggle enables manual overrides instantly if direct operational control is ever desired.</p>
+        </div>
+        <!-- Card 6 -->
+        <div class="feature-card glass-card">
+          <div class="glow-point"></div>
+          <div class="card-icon"><i class="fa-solid fa-award"></i></div>
+          <h3>2-Year Direct Warranty</h3>
+          <p>Our confidence is backed by heavy-duty build standards. Any functional defects are covered by a direct replacement warranty protocol.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Badging Section -->
+  <section class="section trust-section" id="trust">
+    <div class="section-container">
+      <div class="section-header text-center">
+        <span class="section-tag">Quality Assured</span>
+        <h2 class="section-title">The Standard of Reliability</h2>
+        <p class="section-subtitle">We design for tough operating environments where cheaper electronics fail.</p>
+      </div>
+
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h4>Made for Indian Homes</h4>
+          <p>Engineered to handle severe grid voltage sags, voltage surges, high ambient heat, and humid environments.</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+          <h4>100% Quality Tested</h4>
+          <p>Every single unit undergoes rigorous 48-hour burn-in cycles and load tests under simulated motor stresses before packing.</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><i class="fa-brands fa-whatsapp"></i></div>
+          <h4>Dedicated Support</h4>
+          <p>Get quick responses from our technical team. Integrated WhatsApp channels ensure diagnostic answers in minutes.</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><i class="fa-solid fa-box-open"></i></div>
+          <h4>Premium Packaging</h4>
+          <p>Shipped in robust, custom ESD-safe molded boxes with explicit wiring schematics, installation guides, and components.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dealer & Contact Section -->
+  <section class="section dealer-section" id="dealer">
+    <div class="section-container">
+      <div class="dealer-grid-layout">
+        <div class="dealer-info">
+          <span class="section-tag">Business Partnerships</span>
+          <h2>Partner With Us.</h2>
+          <p>Join GV Aqua Controls as an authorized regional dealer, project distributor, or retail affiliate. Expand your product line with premium smart water automation built to standard-setting benchmarks.</p>
+          
+          <div class="dealer-benefits">
+            <div class="benefit">
+              <i class="fa-solid fa-check"></i>
+              <span>High profit-margin distributions with direct logistics support.</span>
+            </div>
+            <div class="benefit">
+              <i class="fa-solid fa-check"></i>
+              <span>Full marketing collateral, brochures, and POS demo units.</span>
+            </div>
+            <div class="benefit">
+              <i class="fa-solid fa-check"></i>
+              <span>Dedicated regional lead referrals.</span>
+            </div>
+          </div>
+
+          <a href="#" class="btn btn-secondary" onclick="event.preventDefault(); alert('Product brochure download started. (Simulated)');"><i class="fa-solid fa-file-pdf"></i> Download Product Brochure (PDF)</a>
+        </div>
+
+        <div class="dealer-form-container glass-card">
+          <h3>Request Callback & Information</h3>
+          <form class="dealer-form" id="dealer-contact-form" onsubmit="event.preventDefault(); alert('Thank you for contacting GV Aqua Controls. Our distribution lead will reach out to you within 24 hours.');">
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" required placeholder="E.g. Rajesh Kumar">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required placeholder="E.g. +91 98765 43210">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Business Email</label>
+              <input type="email" id="email" required placeholder="E.g. contact@business.com">
+            </div>
+            <div class="form-group">
+              <label for="city">City / Region</label>
+              <input type="text" id="city" required placeholder="E.g. Bangalore, Karnataka">
+            </div>
+            <div class="form-group">
+              <label for="type">Inquiry Type</label>
+              <select id="type">
+                <option value="buy">Purchase Single Controller</option>
+                <option value="dealer">Become a Regional Dealer</option>
+                <option value="bulk">Bulk Order for Apartment / Villa Project</option>
+                <option value="oem">OEM / Custom Manufacturing Request</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-glow">Submit Registration</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="section-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <svg viewBox="0 0 100 100" width="40" height="40" style="margin-bottom: 15px;">
+            <path d="M50 20 C 35 45, 25 58, 25 68 A 25 25 0 0 0 75 68 C 75 58, 65 45, 50 20 Z" fill="url(#logo-grad)" />
+          </svg>
+          <h3>GV Aqua Controls</h3>
+          <p>Smart Water. Smarter Living.</p>
+        </div>
+        <div class="footer-links-grid">
+          <div class="footer-column">
+            <h4>Products</h4>
+            <ul>
+              <li><a href="#">Aqua Standard Pro</a></li>
+              <li><a href="#">Sump Level Probe Kit</a></li>
+              <li><a href="#">Custom Project Systems</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Technical Guide</a></li>
+              <li><a href="#">Installation Manuals</a></li>
+              <li><a href="#">Warranty Claims</a></li>
+              <li><a href="#">Contact Support</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Partnership</h4>
+            <ul>
+              <li><a href="#dealer">Dealer Registration</a></li>
+              <li><a href="#">Bulk Requirements</a></li>
+              <li><a href="#">OEM Partnership</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 GV Aqua Controls. All rights reserved. Precision manufactured for Indian households.</p>
+        <div class="socials">
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
