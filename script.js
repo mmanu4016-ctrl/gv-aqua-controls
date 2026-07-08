@@ -128,11 +128,16 @@ function drawFrame(frameIndex) {
 }
 
 // Animation Loop (requestAnimationFrame with Lerp)
+let lastDrawnFrame = null;
 function animationLoop() {
   const diff = scrollState.targetFrame - scrollState.currentFrame;
   if (Math.abs(diff) > 0.01) {
     scrollState.currentFrame += diff * scrollState.ease;
-    drawFrame(Math.round(scrollState.currentFrame));
+    const frameToDraw = Math.round(scrollState.currentFrame);
+    if (frameToDraw !== lastDrawnFrame) {
+      drawFrame(frameToDraw);
+      lastDrawnFrame = frameToDraw;
+    }
   }
 
   // Custom particle float logic (subtle blue electrical vibes overlaying canvas)
@@ -195,14 +200,17 @@ function animationLoop() {
   const diff = scrollState.targetFrame - scrollState.currentFrame;
   if (Math.abs(diff) > 0.01) {
     scrollState.currentFrame += diff * scrollState.ease;
-    drawFrame(Math.round(scrollState.currentFrame));
+    const frameToDraw = Math.round(scrollState.currentFrame);
+    if (frameToDraw !== lastDrawnFrame) {
+      drawFrame(frameToDraw);
+      lastDrawnFrame = frameToDraw;
+    }
   }
-  
   // Custom particle float logic (subtle blue electrical vibes overlaying canvas)
   updateParticles();
-  
   requestAnimationFrame(animationLoop);
-}
+}  
+  // duplicate animation loop removed
 
 // Particle Overlay System
 const particles = [];
