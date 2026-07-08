@@ -1,5 +1,5 @@
 // Global variables and constants
-const frameCount = 240;
+const frameCount = 120;
 const images = [];
 let imagesLoadedCount = 0;
 const canvas = document.getElementById('scrolly-canvas');
