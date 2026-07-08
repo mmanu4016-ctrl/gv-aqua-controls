@@ -1,5 +1,6 @@
 // Global variables and constants
-const frameCount = 120;
+const frameCount = 240;
+const preloadCount = Math.min(frameCount, 15);
 const images = [];
 let imagesLoadedCount = 0;
 const canvas = document.getElementById('scrolly-canvas');
@@ -11,46 +12,132 @@ const getFramePath = (index) => {
   return `frames/ezgif-frame-${pad}.jpg`;
 };
 
-// Lerp scroll coordinates for 120fps physical smoothness
-const scrollState = {
-  currentFrame: 1,
-  targetFrame: 1,
-  ease: 0.08
-};
-
-// Preload Image Sequence
+// Preload first few frames (first 15) for immediate display
 function preloadImages() {
   const loaderBar = document.getElementById('loading-bar');
   const loaderPercent = document.getElementById('loading-percent');
   const preloader = document.getElementById('preloader');
 
-  for (let i = 1; i <= frameCount; i++) {
+  for (let i = 1; i <= preloadCount; i++) {
     const img = new Image();
     img.src = getFramePath(i);
     img.onload = () => {
       imagesLoadedCount++;
-      const progress = Math.round((imagesLoadedCount / frameCount) * 100);
+      const progress = Math.round((imagesLoadedCount / preloadCount) * 100);
       loaderBar.style.width = `${progress}%`;
       loaderPercent.textContent = `${progress}%`;
 
-      if (imagesLoadedCount === frameCount) {
-        // Complete preload
+      if (imagesLoadedCount === preloadCount) {
+        // Initial preload complete – start the app and lazy‑load the rest
         setTimeout(() => {
           preloader.classList.add('fade-out');
           document.body.style.overflow = 'auto';
           initCanvas();
           requestAnimationFrame(animationLoop);
+          // Begin background loading of remaining frames
+          lazyLoadRemaining();
         }, 600);
       }
     };
     img.onerror = () => {
       console.error(`Failed to load frame: ${getFramePath(i)}`);
-      // Count anyway to avoid getting stuck
-      imagesLoadedCount++;
+      imagesLoadedCount++; // avoid stalling
     };
     images[i] = img;
   }
 }
+
+// Lazy‑load frames 16…240 in the background (using requestIdleCallback when available)
+function lazyLoadRemaining() {
+  const loadNext = (i) => {
+    if (i > frameCount) return;
+    const img = new Image();
+    img.src = getFramePath(i);
+    img.onload = () => {
+      images[i] = img;
+      // Schedule next frame load during idle time
+      scheduleLoad(i + 1);
+    };
+    img.onerror = () => {
+      console.error(`Failed to lazy‑load frame: ${getFramePath(i)}`);
+      scheduleLoad(i + 1);
+    };
+  };
+
+  const scheduleLoad = (nextIndex) => {
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(() => loadNext(nextIndex));
+    } else {
+      setTimeout(() => loadNext(nextIndex), 0);
+    }
+  };
+
+  // Start loading from the first frame after the preload batch
+  scheduleLoad(preloadCount + 1);
+}
+
+// Canvas Initialization & Dynamic Cover Scaling
+function initCanvas() {
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+}
+
+function resizeCanvas() {
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+  ctx.scale(dpr, dpr);
+  drawFrame(Math.round(scrollState.currentFrame));
+}
+
+function drawFrame(frameIndex) {
+  const img = images[frameIndex];
+  if (!img) return; // Frame not yet loaded – skip drawing
+
+  // Clear Canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Aspect ratio scaling (Cover mode - centered)
+  const canvasWidth = window.innerWidth;
+  const canvasHeight = window.innerHeight;
+  const imgWidth = img.naturalWidth || 800;
+  const imgHeight = img.naturalHeight || 450;
+
+  const imgRatio = imgWidth / imgHeight;
+  const canvasRatio = canvasWidth / canvasHeight;
+
+  let drawWidth, drawHeight, drawX, drawY;
+
+  if (canvasRatio > imgRatio) {
+    drawWidth = canvasWidth;
+    drawHeight = canvasWidth / imgRatio;
+    drawX = 0;
+    drawY = (canvasHeight - drawHeight) / 2;
+  } else {
+    drawWidth = canvasHeight * imgRatio;
+    drawHeight = canvasHeight;
+    drawX = (canvasWidth - drawWidth) / 2;
+    drawY = 0;
+  }
+
+  ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+}
+
+// Animation Loop (requestAnimationFrame with Lerp)
+function animationLoop() {
+  const diff = scrollState.targetFrame - scrollState.currentFrame;
+  if (Math.abs(diff) > 0.01) {
+    scrollState.currentFrame += diff * scrollState.ease;
+    drawFrame(Math.round(scrollState.currentFrame));
+  }
+
+  // Custom particle float logic (subtle blue electrical vibes overlaying canvas)
+  updateParticles();
+
+  requestAnimationFrame(animationLoop);
+}
+
+// Duplicate definitions removed to avoid redeclaration errors
 
 // Canvas Initialization & Dynamic Cover Scaling
 function initCanvas() {
