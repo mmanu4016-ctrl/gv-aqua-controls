@@ -1363,3 +1363,58 @@ a {
     flex-wrap: wrap;
   }
 }
+/* =============================
+   Mobile Responsive Adjustments
+   ============================= */
+
+/* Prevent horizontal overflow */
+@media (max-width: 1024px) {
+  body { overflow-x: hidden; }
+}
+
+/* Hero section full viewport and canvas scaling */
+@media (max-width: 1024px) {
+  .scrolly-section { height: 400vh; }
+  .sticky-container { height: 100vh; }
+  #scrolly-canvas { width: 100%; height: 100%; object-fit: contain; }
+}
+
+/* Typography scaling for tablets */
+@media (max-width: 768px) {
+  .hero-title { font-size: 3.5rem; margin-bottom: 12px; }
+  .hero-subtitle { font-size: 1.8rem; margin-bottom: 20px; }
+  .hero-description { font-size: 1rem; max-width: 90%; margin: 0 auto; }
+  .hero-ctas { flex-direction: column; gap: 12px; }
+  .btn { font-size: 0.85rem; padding: 12px 24px; }
+  .btn-sm { font-size: 0.75rem; padding: 6px 14px; }
+  .slide-content { max-width: 90%; padding: 0 5%; }
+  .slide-title { font-size: 2.8rem; }
+  .slide-copy { font-size: 1rem; }
+  .nav-container { padding: 0 20px; }
+  .nav-menu { gap: 16px; font-size: 0.75rem; }
+}
+
+/* Extra‑small phones */
+@media (max-width: 430px) {
+  .hero-title { font-size: 2.8rem; }
+  .hero-subtitle { font-size: 1.5rem; }
+}
+@media (max-width: 412px) {
+  .hero-title { font-size: 2.6rem; }
+  .hero-subtitle { font-size: 1.4rem; }
+}
+@media (max-width: 390px) {
+  .hero-title { font-size: 2.4rem; }
+  .hero-subtitle { font-size: 1.3rem; }
+}
+@media (max-width: 360px) {
+  .hero-title { font-size: 2.2rem; }
+  .hero-subtitle { font-size: 1.2rem; }
+}
+
+/* Ensure sections respect container width */
+@media (max-width: 1024px) {
+  .section, .section-container, .glass-card, .feature-card { max-width: 100%; box-sizing: border-box; }
+}
+
+/* End of Mobile Responsive Adjustments */
