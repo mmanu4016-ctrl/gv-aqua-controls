@@ -5,7 +5,11 @@ const images = [];
 let imagesLoadedCount = 0;
 const canvas = document.getElementById('scrolly-canvas');
 const ctx = canvas.getContext('2d');
-
+const scrollState = {
+  currentFrame: 1,
+  targetFrame: 1,
+  ease: 0.07
+};
 // Image sequence folder & padding format: frames/ezgif-frame-001.jpg to frames/ezgif-frame-240.jpg
 const getFramePath = (index) => {
   const pad = index.toString().padStart(3, '0');
